@@ -65,11 +65,30 @@ Resources:
         CreatedByCloudFormation: "True"
         Name: SimpleLambdaFunction
 
-Outputs:
-  LambdaIAMRole:
-    Description: This is the IAM Role for the lambda function
-    Value: !Ref rLambdaFunctionRole
+  rLambdaFunctionErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Lambda Function Error > 0
+      ComparisonOperator: GreaterThanThreshold
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref rLambdaFunction
+      EvaluationPeriods: 1
+      MetricName: Errors
+      Namespace: AWS/Lambda
+      Period: 300
+      Statistic: Sum
+      Threshold: 0
 
-  LambdaFunction:
-    Description: This is the lambda function we deployed
-    Value: !Ref rLambdaFunction
+Outputs:
+  LambdaIAMRoleARN:
+    Description: This is the ARN for the IAM Role for the lambda function
+    Value: !GetAtt rLambdaFunctionRole.Arn
+
+  LambdaFunctionARN:
+    Description: This is the ARN for the lambda function we deployed
+    Value: !GetAtt rLambdaFunction.Arn
+
+  LambdaAlarmARN:
+    Description: The ARN for the cloudwatch alarm
+    Value: !GetAtt rLambdaFunctionErrorAlarm.Arn
