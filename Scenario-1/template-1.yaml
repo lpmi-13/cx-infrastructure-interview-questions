@@ -37,6 +37,9 @@ Resources:
             Action:
               - sts:AssumeRole
       Path: "/"
+      Tags:
+        CreatedByCloudFormation: "True"
+        Name: SimpleLambdaRole
       Policies:
         - PolicyName: create-logs
           PolicyDocument:
