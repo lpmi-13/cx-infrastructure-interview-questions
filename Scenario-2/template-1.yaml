@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: "AWS::Serverless-2016-10-31"
+
+Description: Create an S3 Bucket so we can upload some python to it
+
+Parameters:
+  S3BucketName:
+    Description: The name for the new bucket to create
+    Type: String
+    Default: default-name-change-me
+
+Resources:
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref S3BucketName
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+         BlockPublicAcls: true
+         IgnorePublicAcls: true
+         BlockPublicPolicy: true
+         RestrictPublicBuckets: true
+      Tags:
+        - Key: "CreatedByCloudFormation"
+          Value: "True"
+        - Key: "Scenario"
+          Value: "2"
+
+Outputs:
+  S3BucketName:
+    Description: The Name of the S3 bucket we created
+    Value: !Ref S3Bucket
+  S3BucketARN:
+    Description: The ARN for the S3 bucket we created
+    Value: !GetAtt S3Bucket.Arn
