@@ -99,3 +99,10 @@ Resources:
       Threshold: 0
 
 Outputs:
+  LambdaIAMRole:
+    Description: This is the IAM Role for the lambda function
+    Value: !Ref rLambdaFunctionRole
+
+  LambdaFunction:
+    Description: This is the lambda function we deployed
+    Value: !Ref rLambdaFunction
