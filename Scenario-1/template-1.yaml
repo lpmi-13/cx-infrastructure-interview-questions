@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: "AWS::Serverless-2016-10-31"
 
-Description: ECS Infrastructure Interview Template 1
+Description: Provision a lambda from S3
 
 Parameters:
   pArtifactS3BucketName:
