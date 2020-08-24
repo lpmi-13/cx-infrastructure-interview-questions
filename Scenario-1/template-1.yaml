@@ -3,6 +3,24 @@ AWSTemplateFormatVersion: 2010-09-09
 Description: ECS Infrastructure Interview Template 1
 
 Parameters:
+  ArtifactS3BucketName:
+    Description: the name of our S3 bucket for the lambda function
+    Type: String
+
+  ArtifactS3Key:
+    Description: The object key for our lambda source code from S3
+    Type: String
+
+  LogLevel:
+    Description: the logging level for our lambda function
+    Type: String
+    Default: Info
+    AllowedValues:
+      - Debug
+      - Info
+      - Warning
+      - Error
+      - Critical
 
 Resources:
   rLambdaFunctionRole:
