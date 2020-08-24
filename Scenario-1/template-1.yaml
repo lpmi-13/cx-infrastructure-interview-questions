@@ -52,52 +52,18 @@ Resources:
   rLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: lambda.handler
-      Environment:
-        Variables:
-          LOG_LEVEL: !Ref pLogLevel
       CodeUri:
         Bucket: !Ref pArtifactS3BucketName
         Key: !Ref pArtifactS3Key
+      Environment:
+        Variables:
+          LOG_LEVEL: !Ref pLogLevel
+      Handler: lambda.handler
       Role: !GetAtt rLambdaFunctionRole.Arn
       Runtime: python3.7
       Tags:
-        CreatedByCloudFormation: True
+        CreatedByCloudFormation: "True"
         Name: SimpleLambdaFunction
-
-  rLambdaFunctionAliasErrorAlarm:
-    Type: AWS::CloudWatch::Alarm
-    Properties:
-      AlarmDescription: Lambda Function Error > 0
-      ComparisonOperator: GreaterThanThreshold
-      Dimensions:
-        - Name: Resource
-          Value: !Sub ${rLambdaFunction}:${pFunctionAliasName}
-        - Name: FunctionName
-          Value: !Ref rLambdaFunction
-      EvaluationPeriods: 1
-      MetricName: Errors
-      Namespace: AWS/Lambda
-      Period: 300
-      Statistic: Sum
-      Threshold: 0
-
-  rLambdaFunctionVersionErrorAlarm:
-    Type: AWS::CloudWatch::Alarm
-    Properties:
-      AlarmDescription: Lambda Function Error > 0
-      ComparisonOperator: GreaterThanThreshold
-      Dimensions:
-        - Name: Resource
-          Value: !Ref rLambdaFunction.Version
-        - Name: FunctionName
-          Value: !Ref rLambdaFunction
-      EvaluationPeriods: 1
-      MetricName: Errors
-      Namespace: AWS/Lambda
-      Period: 300
-      Statistic: Sum
-      Threshold: 0
 
 Outputs:
   LambdaIAMRole:
