@@ -51,19 +51,18 @@ Resources:
   rLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: lambda.lambda_handler
+      Handler: lambda.handler
       Environment:
         Variables:
           LOG_LEVEL: !Ref pLogLevel
       CodeUri:
         Bucket: !Ref pArtifactS3BucketName
         Key: !Ref pArtifactS3Key
-      Role: !Ref rLambdaFunctionRole
-      DeploymentPreference:
-        Type: AllAtOnce
-      Alarms:
-        - !Ref rLambdaFunctionAliasErrorAlarm
-        - !Ref rLambdaFunctionVersionErrorAlarm
+      Role: !GetAtt rLambdaFunctionRole.Arn
+      Runtime: python3.7
+      Tags:
+        CreatedByCloudFormation: True
+        Name: SimpleLambdaFunction
 
   rLambdaFunctionAliasErrorAlarm:
     Type: AWS::CloudWatch::Alarm
