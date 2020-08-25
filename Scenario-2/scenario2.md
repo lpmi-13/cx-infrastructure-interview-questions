@@ -9,7 +9,7 @@ Template 1 - S3 Source Code Bucket
 ---
 Template 2 - Lambda and DynamoDb:
 
-`Task:` Complete template 2 to create lambda and DynamoDb resouce and allow the lambda to access the DynamoDb.
+`Task:` Complete template 2 to create lambda and DynamoDb resources and allow the lambda to access the DynamoDb table.
 
 `Lambda Requirements:`
 - Python handler: `get_item.lambda_handler`

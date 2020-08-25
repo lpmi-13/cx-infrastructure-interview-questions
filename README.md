@@ -18,9 +18,9 @@ Please read all of these instructions carefully. Following these instructions is
 
 Please begin this exercise by forking the repo into your personal GitHub workspace. When you have finished your work, please email your contact at ECS with the URL of your forked repo. Please ensure that your work has been merged into the **master** branch of your fork. You don't need to make a pull request to put your code into our repo.
 
-### Don't spend to long
+### Don't spend too long
 
-There is no time-limit on this work, if you find any of the scenarios to difficult please solve as much as you can and move on to the next one. 
+There is no time-limit on this work, if you find any of the scenarios too difficult please solve as much as you can and move on to the next one. 
 
 ### Present your code clearly
 

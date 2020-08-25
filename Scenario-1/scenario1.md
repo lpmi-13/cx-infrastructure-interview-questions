@@ -2,7 +2,7 @@
 
 `Task:` Fix the issues with template-1.yaml to deploy the sample lambda
 
-`Definition of success:` CloudFormation template is sucessfully deployed and lambda executes sucessfully
+`Definition of success:` CloudFormation template is successfully deployed and lambda executes successfully
 ```
 Aims:
 - Deploy the lambda using CloudFormation (manual code upload to S3 is ok)
