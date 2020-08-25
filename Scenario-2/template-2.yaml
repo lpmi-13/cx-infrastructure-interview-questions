@@ -114,6 +114,18 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: !Ref pPrimaryKey
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: !Ref pPrimaryKey
+          KeyType: "HASH"
+      TableName: !Ref pTableName
+      Tags:
+        - Key: "CreatedByCloudFormation"
+          Value: "True"
+        - Key: "Scenario"
+          Value: "2"
 
 Outputs:
 
