@@ -142,12 +142,12 @@ Outputs:
 
   GetCustomerInformationAppFunctionRole:
     Description: IAM function role Arn for the Get Customer Information App Function
-    Value: # Complete me
+    Value: !GetAtt rGetCustomerInformationAppFunctionRole.Arn
 
   GetCustomerInformationLambdaFunction:
     Description: Arn of Get Customer information Lambda Function
-    Value: # Complete me
+    Value: !GetAtt rGetCustomerInformationAppFunction.Arn
 
   CustomerInformationDynamoDb:
     Description: Customer Information Dynamo DB Table name
-    Value: # Complete me
+    Value: !GetAtt rCustomerInformationDynamoDb.Arn
