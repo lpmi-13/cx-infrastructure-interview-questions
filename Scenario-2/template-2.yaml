@@ -84,6 +84,17 @@ Resources:
       Path: /
       Policies:
       # Add policy to read dynamodb
+      - PolicyName: lambda-access-dynamodb
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            Effect: Allow
+            Action:
+              - dynamodb:GetItem
+              - dynamodb:PutItem
+              - dynamodb:Query
+            Resource:
+              - !GetAtt rCustomerInformationDynamoDb.Arn
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
