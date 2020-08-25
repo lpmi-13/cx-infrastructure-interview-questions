@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 
-Description: ECS CX Interview Questions Scenario 2 Template 2
+Description: Create the lambda from S3 and set up permissions to access DynamoDb
 
 Transform: AWS::Serverless-2016-10-31
 
