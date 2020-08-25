@@ -46,6 +46,11 @@ Parameters:
     Type: String
     Default: GetItemDynamoDbLambda.zip
 
+  pPrimaryKey:
+    Description: Primary Sort key for the table
+    Type: String
+    Default: "PhoneNumber"
+
   pLogLevel:
     Description: verbosity level of function loggers
     Type: String
@@ -56,6 +61,11 @@ Parameters:
       - WARNING
       - INFO
       - DEBUG
+
+  pTableName:
+    Description: This is the table name for the lambda to query
+    Type: String
+    Default: Dynamo-Lambda-Table
 
 Resources:
 
