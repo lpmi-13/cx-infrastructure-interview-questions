@@ -82,8 +82,21 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri:
-        Bucket: # Bucket Name from parameters
-        Key: # Key from parameters
+        Bucket: !Ref pArtifactS3BucketName
+        Key: !Ref pArtifactS3Key
+      Environment:
+        Variables:
+          LOG_LEVEL: !Ref pLogLevel
+          TABLE_NAME: !Ref pTableName
+          TABLE_REGION: !Ref AWS::Region
+      Handler: get_item.lambda_handler
+      Role: !GetAtt rGetCustomerInformationAppFunctionRole.Arn
+      Runtime: python3.7
+      Timeout: 10
+      Tags:
+        CreatedByCloudFormation: "True"
+        Name: AccessDynamoDBLambdaFunction
+        Scenario: "2"
 
   # Complete DynamoDb resource for string attribute "PhoneNumber"
   rCustomerInformationDynamoDb:
